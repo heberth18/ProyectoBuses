@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ProyectoBuses.Models.bus>
+
+@{
+    ViewBag.Title = "ListaBusesDestino";
+}
+
+<h2>ListaBusesDestino</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_bus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.destino)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_bus)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.marca_nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.destino.nombre)
+    </td>
+</tr>
+}
+
+</table>

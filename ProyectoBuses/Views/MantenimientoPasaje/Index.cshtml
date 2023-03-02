@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProyectoBuses.Models.pasaje>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Aqui Puedes crear editar y eliminar pasajes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bus.marca_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.cliente_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bus.marca_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.cliente_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_pasaje }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_pasaje }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_pasaje })
+        </td>
+    </tr>
+}
+
+</table>

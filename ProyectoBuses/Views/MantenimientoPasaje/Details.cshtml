@@ -1,0 +1,50 @@
+﻿@model ProyectoBuses.Models.pasaje
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pasaje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bus.marca_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bus.marca_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.cliente_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.cliente_nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_pasaje }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

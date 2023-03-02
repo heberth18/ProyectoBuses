@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bd_ProyectoBusesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bus">
+    <Key>
+      <PropertyRef Name="id_bus" />
+    </Key>
+    <Property Name="id_bus" Type="Int32" Nullable="false" />
+    <Property Name="marca_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_destino" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="destino" Relationship="Self.FK__bus__id_destino__38996AB5" FromRole="bus" ToRole="destino" />
+    <NavigationProperty Name="pasaje" Relationship="Self.FK__pasaje__id_bus__3D5E1FD2" FromRole="bus" ToRole="pasaje" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="rut_cliente" />
+    </Key>
+    <Property Name="rut_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="pasaje" Relationship="Self.FK__pasaje__rut_clie__3E52440B" FromRole="cliente" ToRole="pasaje" />
+  </EntityType>
+  <EntityType Name="destino">
+    <Key>
+      <PropertyRef Name="id_destino" />
+    </Key>
+    <Property Name="id_destino" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="bus" Relationship="Self.FK__bus__id_destino__38996AB5" FromRole="destino" ToRole="bus" />
+  </EntityType>
+  <EntityType Name="pasaje">
+    <Key>
+      <PropertyRef Name="id_pasaje" />
+    </Key>
+    <Property Name="id_pasaje" Type="Int32" Nullable="false" />
+    <Property Name="id_bus" Type="Int32" Nullable="false" />
+    <Property Name="rut_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="bus" Relationship="Self.FK__pasaje__id_bus__3D5E1FD2" FromRole="pasaje" ToRole="bus" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__pasaje__rut_clie__3E52440B" FromRole="pasaje" ToRole="cliente" />
+    <Property Name="fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__bus__id_destino__38996AB5">
+    <End Role="destino" Type="Self.destino" Multiplicity="1" />
+    <End Role="bus" Type="Self.bus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="destino">
+        <PropertyRef Name="id_destino" />
+      </Principal>
+      <Dependent Role="bus">
+        <PropertyRef Name="id_destino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pasaje__id_bus__3D5E1FD2">
+    <End Role="bus" Type="Self.bus" Multiplicity="1" />
+    <End Role="pasaje" Type="Self.pasaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bus">
+        <PropertyRef Name="id_bus" />
+      </Principal>
+      <Dependent Role="pasaje">
+        <PropertyRef Name="id_bus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pasaje__rut_clie__3E52440B">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="pasaje" Type="Self.pasaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="rut_cliente" />
+      </Principal>
+      <Dependent Role="pasaje">
+        <PropertyRef Name="rut_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bd_ProyectoBusesEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bus" EntityType="Self.bus" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="destino" EntityType="Self.destino" />
+    <EntitySet Name="pasaje" EntityType="Self.pasaje" />
+    <AssociationSet Name="FK__bus__id_destino__38996AB5" Association="Self.FK__bus__id_destino__38996AB5">
+      <End Role="destino" EntitySet="destino" />
+      <End Role="bus" EntitySet="bus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pasaje__id_bus__3D5E1FD2" Association="Self.FK__pasaje__id_bus__3D5E1FD2">
+      <End Role="bus" EntitySet="bus" />
+      <End Role="pasaje" EntitySet="pasaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pasaje__rut_clie__3E52440B" Association="Self.FK__pasaje__rut_clie__3E52440B">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="pasaje" EntitySet="pasaje" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

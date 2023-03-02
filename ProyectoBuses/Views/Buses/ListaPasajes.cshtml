@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ProyectoBuses.Models.pasaje>
+
+@{
+    ViewBag.Title = "ListaPasajesCliente";
+}
+
+<h2>ListaPasajes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bus.id_bus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bus.destino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.cliente_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.precio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.bus.id_bus)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.bus.destino.nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.cliente.cliente_nombre)
+    </td>
+</tr>
+}
+
+</table>

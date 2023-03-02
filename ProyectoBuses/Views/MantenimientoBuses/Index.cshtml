@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProyectoBuses.Models.bus>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Aqui Puedes crear editar y eliminar buses</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.marca_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.destino.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.marca_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.destino.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_bus }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_bus }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_bus })
+        </td>
+    </tr>
+}
+
+</table>

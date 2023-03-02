@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bd_ProyectoBusesModelStoreContainer" CdmEntityContainer="bd_ProyectoBusesEntities1">
+    <EntitySetMapping Name="bus">
+      <EntityTypeMapping TypeName="bd_ProyectoBusesModel.bus">
+        <MappingFragment StoreEntitySet="bus">
+          <ScalarProperty Name="id_bus" ColumnName="id_bus" />
+          <ScalarProperty Name="marca_nombre" ColumnName="marca_nombre" />
+          <ScalarProperty Name="id_destino" ColumnName="id_destino" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="bd_ProyectoBusesModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="rut_cliente" ColumnName="rut_cliente" />
+          <ScalarProperty Name="cliente_nombre" ColumnName="cliente_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="destino">
+      <EntityTypeMapping TypeName="bd_ProyectoBusesModel.destino">
+        <MappingFragment StoreEntitySet="destino">
+          <ScalarProperty Name="id_destino" ColumnName="id_destino" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pasaje">
+      <EntityTypeMapping TypeName="bd_ProyectoBusesModel.pasaje">
+        <MappingFragment StoreEntitySet="pasaje">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_pasaje" ColumnName="id_pasaje" />
+          <ScalarProperty Name="id_bus" ColumnName="id_bus" />
+          <ScalarProperty Name="rut_cliente" ColumnName="rut_cliente" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
